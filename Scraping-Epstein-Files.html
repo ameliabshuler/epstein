@@ -162,6 +162,18 @@
           </button>
           <span class="share-feedback" id="shareFeedback">URL copied to clipboard</span>
         </section>
+
+        <section class="post-comments">
+          <h2 class="comments-heading">Comments</h2>
+          <form class="comment-form" id="commentForm">
+            <div class="comment-form-fields">
+              <input class="comment-input" type="text" id="commentName" placeholder="Name" maxlength="80" required />
+              <textarea class="comment-textarea" id="commentText" placeholder="Leave a comment…" maxlength="2000" rows="4" required></textarea>
+            </div>
+            <button class="comment-submit" type="submit">Post comment</button>
+          </form>
+          <div class="comment-list" id="commentList"></div>
+        </section>
       </article>
     </main>
 
@@ -218,6 +230,57 @@
         modal.style.display = 'none';
       }
     }
+
+    // Comments
+    const COMMENTS_KEY = 'comments_scraping-epstein-files';
+
+    function loadComments() {
+      return JSON.parse(localStorage.getItem(COMMENTS_KEY) || '[]');
+    }
+
+    function saveComments(comments) {
+      localStorage.setItem(COMMENTS_KEY, JSON.stringify(comments));
+    }
+
+    function formatDate(iso) {
+      return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function renderComments() {
+      const list = document.getElementById('commentList');
+      const comments = loadComments();
+      if (comments.length === 0) {
+        list.innerHTML = '<p class="no-comments">No comments yet. Be the first.</p>';
+        return;
+      }
+      list.innerHTML = comments.map(c => `
+        <div class="comment">
+          <div class="comment-meta">
+            <span class="comment-author">${escapeHtml(c.name)}</span>
+            <span class="comment-date">${formatDate(c.date)}</span>
+          </div>
+          <p class="comment-body">${escapeHtml(c.text)}</p>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    document.getElementById('commentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('commentName').value.trim();
+      const text = document.getElementById('commentText').value.trim();
+      if (!name || !text) return;
+      const comments = loadComments();
+      comments.push({ name, text, date: new Date().toISOString() });
+      saveComments(comments);
+      this.reset();
+      renderComments();
+    });
+
+    renderComments();
   </script>
 </body>
 </html>
