@@ -234,7 +234,7 @@
     }
 
     // Comments
-    const supabase = window.supabase.createClient(
+    const db = window.supabase.createClient(
       'https://krpfxbtzeidhscpltctw.supabase.co',
       'sb_publishable_fQZbluHQm60fubb8erFV9Q_wAedD0yk'
     );
@@ -251,7 +251,7 @@
 
     async function loadComments() {
       const list = document.getElementById('commentList');
-      const { data, error } = await supabase
+      const { data, error } = await db
         .from('comments')
         .select('name, body, created_at')
         .eq('post_id', POST_ID)
@@ -284,7 +284,7 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Posting…';
 
-      const { error } = await supabase.from('comments').insert({ post_id: POST_ID, name, body });
+      const { error } = await db.from('comments').insert({ post_id: POST_ID, name, body });
 
       submitBtn.disabled = false;
       submitBtn.textContent = 'Post comment';
