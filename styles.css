@@ -466,4 +466,125 @@ a:focus {
   border-top: 2px solid #EA9901;
   padding-top: 2rem;
   margin-top: 2.6rem;
+  display: grid;
+  gap: 2rem;
+}
+
+.comments-heading {
+  margin: 0;
+  font-family: 'League Gothic', sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+}
+
+.comment-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.comment-form-fields {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.comment-input,
+.comment-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.comment-input::placeholder,
+.comment-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.comment-input:focus,
+.comment-textarea:focus {
+  outline: none;
+  border-color: #EA9901;
+}
+
+.comment-submit {
+  justify-self: start;
+  background: #EA9901;
+  color: #1e1a0a;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.comment-submit:hover {
+  opacity: 0.85;
+}
+
+.comment-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.comment-error {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ff6b6b;
+  min-height: 1.2em;
+}
+
+.comment-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.no-comments {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.95rem;
+}
+
+.comment {
+  border-left: 3px solid #EA9901;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.comment-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.comment-date {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.comment-body {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #e8dcb1;
 }
