@@ -480,12 +480,14 @@ a:focus {
 }
 
 .comment-form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
 .comment-form-fields {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.75rem;
 }
 
