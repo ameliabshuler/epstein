@@ -21,6 +21,7 @@
   </script>
 </head>
 <body>
+  <canvas id="binaryCanvas"></canvas>
   <div class="page-shell">
     <header class="site-header">
       <a class="brand" href="index.html" aria-label="Homepage">
@@ -28,14 +29,9 @@
       </a>
     </header>
 
-    <section class="post-hero" style="grid-template-columns: 1fr; place-items: center; margin-bottom: 0;">
-      <div class="content-shell" style="padding: 6rem 3rem; text-align: center;">
-        <h1 class="post-title" style="font-size: clamp(3rem, 8vw, 6.5rem);">Exploring the Epstein Files</h1>
-      </div>
-    </section>
-
-    <main class="content-shell" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+    <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 3rem;">
       <div style="text-align: center; max-width: 52rem;">
+        <h1 class="post-title" style="font-size: clamp(3rem, 8vw, 6.5rem); margin-bottom: 1.5rem;">Exploring the Epstein Files</h1>
         <p style="font-size: 1.1rem; line-height: 1.85; color: #e8dcb1; margin-bottom: 2rem;">
           A computational analysis of government transparency and data accessibility in one of the most significant document releases in recent history.
         </p>
@@ -49,5 +45,45 @@
       <p>&copy; 2026. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    const canvas = document.getElementById('binaryCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const FONT_SIZE = 14;
+    let columns, drops;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns = Math.floor(canvas.width / FONT_SIZE);
+      drops = Array(columns).fill(1);
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(36, 36, 8, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = FONT_SIZE + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const brightness = Math.random();
+        ctx.fillStyle = brightness > 0.95
+          ? 'rgba(255, 255, 255, 0.9)'
+          : `rgba(234, 153, 1, ${0.15 + brightness * 0.4})`;
+
+        ctx.fillText(Math.random() > 0.5 ? '1' : '0', i * FONT_SIZE, drops[i] * FONT_SIZE);
+
+        if (drops[i] * FONT_SIZE > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    setInterval(draw, 50);
+  </script>
 </body>
 </html>
