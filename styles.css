@@ -72,7 +72,7 @@ a:focus {
   align-items: center;
   gap: 1rem;
   padding: 2rem 3rem 1.5rem;
-  background: transparent;
+  background: #242408;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
