@@ -31,7 +31,7 @@
     <section class="post-hero">
       <div class="content-shell">
         <div class="post-hero-text">
-          <p class="post-meta">April 4th, 2026</p>
+          <p class="post-meta">April 14th, 2026</p>
           <h1 class="post-title">Scraping the Epstein Files</h1>
         </div>
       </div>
@@ -61,12 +61,20 @@
             <li>run unsupervised machine learning algorithms to create clusters of the emails for analysis</li>
             <li>create a dashboard for findings</li>
           </ol>
-          <p>I decided to accompany this work with a series of blog posts to track findings as I go along. Even just scraping the files from the sites has proven enlightening; there is rampant misinformation around the Epstein files that is being reported by major news sources. What was supposed to be an effort of transparency to the general public has left constituents more confused than ever.</p>
+          <p>I decided to accompany this work with a series of blog posts to track findings as I go along. Even just scraping the 
+            files from the sites has proven enlightening; there is rampant misinformation around the Epstein files that is being r
+            eported by major news sources. What was supposed to be an effort of transparency to the general public has left constituents 
+            more confused than ever.</p>
         </section>
 
         <section>
           <h2>What are the Epstein files?</h2>
-          <p>The Epstein files refers to two releases of files by the United States government. In September 2025, the Oversight Committee <a href="https://oversight.house.gov/release/oversight-committee-releases-epstein-records-provided-by-the-department-of-justice/" target="_blank">published 33,295 pages.</a> In November 2025, the US government passed the Epstein File Transparency Act, mandating larger releases of files. In response in January 2026, the Department of Justice (DOJ) published <a href="https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files" target="_blank">3.5 million additional pages.</a></p>
+          <p>The Epstein files refers to two releases of files by the United States government. In September 2025, the Oversight Committee 
+            <a href="https://oversight.house.gov/release/oversight-committee-releases-epstein-records-provided-by-the-department-of-justice/" target="_blank">
+              published 33,295 pages.</a> In November 2025, the US government passed the Epstein File Transparency Act, mandating larger releases of files. 
+              In response in January 2026, the Department of Justice (DOJ) published 
+              <a href="https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files" target="_blank">3.5 
+                million additional pages.</a></p>
           <p>The Oversight Committee files were released on a <a href="https://drive.google.com/drive/folders/1TrGxDGQLDLZu1vvvZDBAh-e7wN3y6Hoz?usp=sharing" target="_blank"> Google Drive link </a>, which, as of writing, isn’t working. They have a <a href="https://www.dropbox.com/scl/fo/98fthv8otekjk28lcrnc5/AIn3egnE58MYe4Bn4fliVBw?rlkey=m7p8e9omml96fgxl13kr2nuyt&e=1&st=0xvm0p08&dl=0" target="_blank">backup Dropbox link.</a> Files are things like videos (.MP4), photos (.JPEG), and audio (.WAV).</p>
           <figure class="post-image">
             <picture>
@@ -89,7 +97,7 @@
         <section>
           <h2>It all seems normal, right?</h2>
           <p>Wrong. First, the usability of the site is atrocious. While everything is a PDF, the document might contain images, emails, or court records. There is no discernible information about what the file might contain.</p>
-          <p>The files are not designed to be downloaded – they are not in sequential order and skip over large chunks. This is to be expected with redacted files; it is to be assumed that files XX through XX are redacted. However, from a research standpoint, it is difficult to tell if the scraper captured all files. Are the files missing because they don’t exist for download or because of a technical failure on the scraper’s end?</p>
+          <p>The files are not designed to be downloaded – they are not in sequential order and skip over large chunks. This is to be expected with redacted files; it is to be assumed that files 3217 to 3235 are redacted. However, from a research standpoint, it is difficult to tell if the scraper captured all files. Are the files missing because they don’t exist for download or because of a technical failure on the scraper’s end?</p>
           <figure class="post-image">
             <picture>
               <source media="(max-width: 768px)" srcset="assets/blog_1/image_3_mobile.jpg" />
@@ -132,32 +140,10 @@
 
         <section>
           <p>Another theory is that the files went offline to undergo further redaction. In February, <a href="https://www.bbc.com/news/articles/cn0k65pnxjxo" target="_blank">there were several complaints</a> that the files had published names, nicknames, and other identifiers of victims. However, these complaints surfaced in February, long before I looked at the files March 5th.</p>
+          <p>In rerunning the scraper on April 13th, a similar issue arose with dataset 9. Previously, I had downloaded only 50 files. Now, there were nearly 500,000 files. Again, no announcement, no explanation. It is impossible to get accurate counts and information around the files when they go on and offline seemingly at the whim of the government. </p>
           <p>The main problem here is the lack of transparency of what is going on with the files – the DOJ is not transparent as to when they are taking down files or why. The takedowns only seem to be happening in the largest datasets - dataset 10 and dataset 11.</p>
           <p>Another issue around transparency is the reporting by the media. The original <a href="https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files" target="_blank">DOJ press release claimed</a> 3.5 million new pages of content. <a href="https://www.bbc.com/news/articles/cz7genjx9njo" target="_blank">BBC</a> reported shortly after that there are “millions of new files.” The Guardian <a href="https://www.theguardian.com/us-news/2026/feb/02/new-jeffrey-epstein-files-key-takeaways" target="_blank">also claims three million files</a>. These numbers scare the public and deter investigation. Who possibly has time to look at 3.5 million files? Even my thesis supervisor wanted to deter me from looking at the files because of their sheer volume.</p>
-          <p>However, there are only XX total files and XX total number of pages. This is across both the Oversight Committee’s release and the DOJ’s release. A big goal of my thesis is to increase transparency around the files. Reporting accurate numbers is a critical first step in doing so.</p>
-        </section>
-
-        <section>
-          <h2>What did I learn about running a web scraper at scale?</h2>
-          <p>I had learned web scraping in my data harvesting class, but never more than 600 items and a few web pages. This is my first project at such a large scale. My original (naively ambitious) thought was to run the scraper overnight one night and have all files. When I woke up after the first night, I hadn’t even scraped through dataset three. I ended up running the scraper nights, weekends, and any moment I didn’t need to actively use my computer. After three weeks, I decided to install a second instance of RStudio to be able to work on schoolwork and scrape the files at the same time.</p>
-          <p>The original scraper was designed to start from the beginning (dataset 1) and check to see if pages were already downloaded before moving on. However, this was not scalable. The scraper wasted 1-2 hours checking through every page before it could even begin to download anything new. I amended the scraper to be able to restart from wherever I specified, so I was able to set it to begin in dataset 10 on page 305, for example.</p>
-          <figure class="post-image">
-            <picture>
-              <source media="(max-width: 768px)" srcset="assets/blog_1/image_7_mobile.jpg" />
-              <img src="assets/blog_1/image_7.jpg" alt="Scraper code showing dataset and page configuration" />
-            </picture>
-          </figure>
-          <p>I unfortunately didn’t notice until I had run this a few times that the DOJ had messed up their pagination. When I was specifying page 1138, it was really pointing to page 1139. This meant I skipped pages every time I stopped and started the scraper.</p>
-          <figure class="post-image">
-            <picture>
-              <source media="(max-width: 768px)" srcset="assets/blog_1/image_8_mobile.jpg" />
-              <img src="assets/blog_1/image_8.jpg" alt="Screenshot of DOJ pagination issue" />
-            </picture>
-          </figure>
-          <p>While this caused some panic, everything was cleaned up in a final scrape, run on XX date.</p>
-          <p>Another issue I ran into around dataset 10, was the scraper slowing down significantly. This could’ve been from a few things – did the DOJ figure out I was using a scraper and throttle my download so it times out? To avoid this, I created a variable with three different IDs and three different delay timers, so my patterns wouldn’t be so predictable. Was my code editor storing too much local memory? I added code to clear local caches after each page’s download. Was the code editor struggling to open a folder with 200,000 files? I named the existing file to dataset_10_ignore so that the code would create a new dataset_10 folder. The combination of these things did end up returning the speed to its original. However, this meant that I spent time running bash command-line code to recombine the folders.</p>
-          <p>If I were to redo this portion of the project, I would’ve left the scraper to run once start to finish. This would’ve avoided the pagination issue, the speed issue, and writing unnecessary lines of code. I would’ve downloaded a second instance of RStudio from the beginning to be able to work on other projects. However, we don’t live in a perfect world, I don’t own two macbooks, and I needed to be able to take my laptop with me to class.</p>
-          <p>As for next steps, I need to use pixel recognition and optical character recognition (OCR) to classify the types of documents – photos, emails, and court documents – to select just the emails for analysis.</p>
+          <p>However, initial counts indicate fewer files than 3.5 million. This is across both the Oversight Comittee’s release and the DOJ’s release. A big goal of my thesis is to increase transparency around the files. Reporting accurate numbers is a critical first step in being able to do so. Once I’ve finished scraping, I will be able to report numbers accurate to a specific timeframe, along with clear information about how I obtained the files and from where. As I learn more information, I will continue to publish these blogs.</p>
         </section>
 
         <section class="post-share">
